@@ -1,0 +1,44 @@
+public static void main(String[] args) {
+		
+		do {
+		System.out.println("Choisissez le mode de conversion :");
+		System.out.println("1- convertisseur Celsius - Fahrenheit");
+		System.out.println("2- convertisseur Fahrenheit - Celsius");
+		Scanner sc = new Scanner(System.in);
+		int i = sc.nextInt();
+		if(i == 1) {
+			System.out.println("Température à convertir :");
+			Scanner sc1 = new Scanner(System.in);
+			int f1 = sc1.nextInt();
+			double f2 = (9/5)*f1+32;
+			f2 = arrondi(f2, 2);
+			System.out.println(f1 + "°C correspond à : " + f2);
+		} else if(i == 2) {
+			System.out.println("Température à convertir :");
+			Scanner sc2 = new Scanner(System.in);
+			int c1 = sc2.nextInt();
+			double c2 = ((c1-32)*5)/9;
+			c2 = arrondi(c2, 2);
+			System.out.println(c1 + "°F correspond à : " + c2);
+		} else {
+			System.out.println("La valeur entrée est incorrecte");
+		}
+		
+		} while(again() == 'O');
+	}
+	
+	public static double arrondi(double A, int B) {
+		  return (double) ( (int) (A * Math.pow(10, B) + .5)) / Math.pow(10, B);
+		}
+	public static char again() {
+		System.out.println("Souhaitez-vous convertir une autre température ?(O/N)");
+		Scanner sc3 = new Scanner(System.in);
+		String str = sc3.nextLine();
+		char carac = str.charAt(0);
+		if(carac == 'O' || carac == 'N') {
+			return carac;
+		} else {
+			System.out.println("La valeur entrée est incorrecte");
+			return 0;
+		}
+	}
